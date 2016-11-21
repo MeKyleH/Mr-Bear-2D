@@ -6,9 +6,22 @@ public class CameraFollow : MonoBehaviour {
     private Transform target;
     [SerializeField]
     private Vector3 offsetPosition;
+    [SerializeField]
+    private bool orthographicMode = false;
 
-    public void Update()
+    private Camera camera;
+
+    private void Start()
     {
+        camera = GetComponent<Camera>();
+    }
+
+    private void Update()
+    {
+        if (orthographicMode)
+        {
+            camera.orthographic = true;
+        }
         if (target == null)
         {
             Debug.LogWarning("Missing target ref !", this);
@@ -17,9 +30,5 @@ public class CameraFollow : MonoBehaviour {
 
         // compute position
         transform.position = target.position + offsetPosition;
-        
-
-        // compute rotation
-         //transform.rotation = offsetRotation;
     }
 }

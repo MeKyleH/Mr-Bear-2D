@@ -7,6 +7,7 @@ UnityGenerated/
 Library/
 Assets/AssetStoreTools*
 
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
@@ -20,6 +21,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+
 
 # ============ #
 # OS generated #
