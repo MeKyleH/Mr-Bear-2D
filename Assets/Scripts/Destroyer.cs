@@ -2,19 +2,24 @@
 using System.Collections;
 
 public class Destroyer : MonoBehaviour {
+    private PlayerSpawner spawner;
 
-	
-	void OnTriggerEnter(Collider collider)
+    void Start()
     {
-        if(collider.tag == "Player")
+        spawner = GameObject.FindObjectOfType<PlayerSpawner>();
+        if (!spawner)
         {
-            Debug.Log("You died");
-            //TODO: REMOVE A LIFE
-            //TODO: RESPAWN AT SPAWN POINT
+            Debug.Log(name + " did not find spawner at start");
         }
 
-        Destroy(collider.gameObject);
-        
     }
-	
+	void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            //TODO: REMOVE A LIFE
+            spawner.SpawnPlayer();
+        }
+            Destroy(collider.gameObject);
+    }
 }

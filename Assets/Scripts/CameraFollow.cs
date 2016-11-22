@@ -3,12 +3,12 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
     [SerializeField]
-    private Transform target;
-    [SerializeField]
     private Vector3 offsetPosition;
     [SerializeField]
     private bool orthographicMode = false;
 
+
+    private Transform player;
     private Camera camera;
 
     private void Start()
@@ -22,13 +22,17 @@ public class CameraFollow : MonoBehaviour {
         {
             camera.orthographic = true;
         }
-        if (target == null)
+        if (player == null)
         {
-            Debug.LogWarning("Missing target ref !", this);
+            SpawnCamera();
             return;
         }
-
         // compute position
-        transform.position = target.position + offsetPosition;
+        transform.position = Vector3.Lerp(camera.transform.position,player.position + offsetPosition, 2.5f*Time.deltaTime);
+    }
+
+    public void SpawnCamera()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }
