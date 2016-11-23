@@ -1,13 +1,13 @@
 # =============== #
-# Unity generated #
+# Unity generated, builds#
 # =============== #
 Temp/
 Obj/
 UnityGenerated/
 Library/
-Assets/AssetStoreTools*
-
-
+Builds/
+.vs/
+*.dotsettings
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
@@ -16,13 +16,12 @@ ExportedObj/
 *.userprefs
 *.csproj
 *.pidb
-*.sui
+*.suo
 *.sln
 *.user
 *.unityproj
 *.booproj
-
-
+.vs/ 
 # ============ #
 # OS generated #
 # ============ #
@@ -34,6 +33,9 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
-
-
-
+# ============ #
+# Protected Assets #
+# ============ #
+#Ex 
+#Assets/T4*
+#Assets/UnityVS
