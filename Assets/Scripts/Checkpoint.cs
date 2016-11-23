@@ -20,5 +20,4 @@ public class Checkpoint : MonoBehaviour {
             boxCollider.enabled = false;
         }
     }
-    
 }
