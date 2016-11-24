@@ -36,4 +36,11 @@ public class LevelManager : MonoBehaviour {
 	public void LoadNextLevel() {
 		SceneManager.LoadScene(Application.loadedLevel + 1);
 	}
+
+    public void StartNewGame()
+    {
+        PlayerPrefsManager.NewGame();
+        PlayerPrefsManager.UnlockLevel(5);
+        LoadLevel("01b World Map");
+    }
 }
