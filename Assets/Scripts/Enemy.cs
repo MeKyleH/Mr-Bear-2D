@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour {
     {
         if(collider.gameObject.tag == "Player")
         {
-            Debug.Log("deadling damage");
             playerHealthManager.TakeDamage(damage);
         }
     }

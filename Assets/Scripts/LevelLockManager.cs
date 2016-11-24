@@ -12,4 +12,12 @@ public class LevelLockManager : MonoBehaviour {
             this.gameObject.active = false;
         }
     }
+
+    void Awake()
+    {
+        if (!PlayerPrefsManager.IsLevelUnlocked(levelNum))
+        {
+            this.gameObject.active = false;
+        }
+    }
 }
