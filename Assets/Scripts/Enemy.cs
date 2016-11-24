@@ -6,25 +6,20 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     public int damage = 25;
 
-    private HealthManager healthManager;
+    private PlayerHealthManager playerHealthManager;
 
 	// Use this for initialization
 	void Start () {
-        healthManager = GameObject.FindObjectOfType<HealthManager>();
-        if (!healthManager)
+        playerHealthManager = GameObject.FindObjectOfType<PlayerHealthManager>();
+        if (!playerHealthManager)
         {
             Debug.Log(name + " did not find healthManager at start");
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void Attack(int damage)
     {
-        healthManager.HurtPlayer(damage);
+        playerHealthManager.TakeDamage(damage);
     }
 
 
@@ -33,7 +28,8 @@ public class Enemy : MonoBehaviour {
     {
         if(collider.gameObject.tag == "Player")
         {
-            Attack(damage);
+            Debug.Log("deadling damage");
+            playerHealthManager.TakeDamage(damage);
         }
     }
 }
