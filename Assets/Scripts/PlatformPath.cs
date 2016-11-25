@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class PlatformPath : MonoBehaviour
 {
-    public Transform[] points;
+    public Transform[] pathPoints;
 
     public IEnumerator<Transform> GetPathsEnumerator()
     {
-        if (points.Length < 1)
+        if (pathPoints.Length < 1)
         {
             yield break;
         }
@@ -18,9 +19,9 @@ public class PlatformPath : MonoBehaviour
         var index = 0;
         while (true)
         {
-            yield return points[index];
+            yield return pathPoints[index];
 
-            if (points.Length == 1)
+            if (pathPoints.Length == 1)
             {
                 continue;
             }
@@ -29,7 +30,7 @@ public class PlatformPath : MonoBehaviour
             {
                 direction = 1;
             }
-            else if (index >= points.Length - 1)
+            else if (index >= pathPoints.Length - 1)
             {
                 direction = -1;
             }
@@ -40,14 +41,20 @@ public class PlatformPath : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        if (points == null || points.Length < 2)
+        if (pathPoints == null || pathPoints.Length < 2)
         {
             return;
         }
 
-        for (var i = 1; i < points.Length; i++)
+        var drawPoints = pathPoints.Where(t => t != null).ToList();
+        if(drawPoints.Count < 2)
         {
-            Gizmos.DrawLine(points[i - 1].position, points[i].position);
+            return;
+        }
+
+        for (var i = 1; i < drawPoints.Count; i++)
+        {
+            Gizmos.DrawLine(drawPoints[i - 1].position, drawPoints[i].position);
         }
     }
 }
