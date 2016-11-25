@@ -13,7 +13,6 @@ public class Checkpoint : MonoBehaviour {
     }
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(" entered the checkpoint");
         if(collider.gameObject.tag == "Player")
         {
             spawner.reachedCheckpoint = true;
