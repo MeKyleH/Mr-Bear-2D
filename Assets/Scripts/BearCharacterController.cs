@@ -2,20 +2,28 @@
 using System.Collections;
 
 public class BearCharacterController : MonoBehaviour {
+    private Vector3 startScale;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    private void HandlePlatforms()
+    void Start()
     {
+        startScale = gameObject.transform.localScale;
+    }
 
+	void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "MovingPlatform")
+        {
+            gameObject.transform.parent = collider.transform;
+            gameObject.transform.localScale = startScale;
+        }
+    }
 
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.tag == "MovingPlatform")
+        {
+            gameObject.transform.parent = null;
+            gameObject.transform.localScale = startScale;
+        }
     }
 }
