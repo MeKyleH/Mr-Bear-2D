@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class BearCharacterController : MonoBehaviour {
     private Vector3 startScale;
@@ -9,13 +10,15 @@ public class BearCharacterController : MonoBehaviour {
         startScale = gameObject.transform.localScale;
     }
 
-	void OnTriggerEnter(Collider collider)
+    // TODO: ADD AN ICE, MUD, AND SPRINGY OPTION FOR PLATFORMS
+    void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.tag == "MovingPlatform")
         {
             gameObject.transform.parent = collider.transform;
             gameObject.transform.localScale = startScale;
         }
+
     }
 
     void OnTriggerExit(Collider collider)
