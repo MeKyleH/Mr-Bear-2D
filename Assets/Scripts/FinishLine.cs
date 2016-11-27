@@ -4,7 +4,7 @@ using System.Collections;
 public class FinishLine : MonoBehaviour {
     [SerializeField]
     private int unlockLevelNum;
-
+    private LivesManager livesManager;
     private LevelManager levelManager;
 
 	// Use this for initialization
@@ -14,6 +14,11 @@ public class FinishLine : MonoBehaviour {
         {
             Debug.Log(name + " couldn't find levelManager");
         }
+        livesManager = GameObject.FindObjectOfType<LivesManager>();
+        if (!livesManager)
+        {
+            Debug.Log(name + " couldn't find livesManager");
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -21,6 +26,7 @@ public class FinishLine : MonoBehaviour {
         if(collider.gameObject.tag == "Player")
         {
             PlayerPrefsManager.UnlockLevel(unlockLevelNum-1);
+            PlayerPrefsManager.SetNumLives(livesManager.lifeCounter);
             levelManager.LoadLevel("01b World Map");
         }
     }

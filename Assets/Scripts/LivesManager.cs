@@ -7,14 +7,13 @@ public class LivesManager : MonoBehaviour
     private Text lifeText;
     private LevelManager levelManager;
 
-    public int startingLives;
     public int lifeCounter;
 
     // Use this for initialization
     void Start()
     {
         lifeText = GetComponent<Text>();
-        lifeCounter = startingLives;
+        lifeCounter = PlayerPrefsManager.GetNumLives();
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         if(!levelManager)
         {
@@ -38,6 +37,7 @@ public class LivesManager : MonoBehaviour
         lifeCounter--;
         if (lifeCounter <= 0)
         {
+            PlayerPrefsManager.SetNumLives(5);
             levelManager.LoadLevel("01c Game Over");
         }
     }

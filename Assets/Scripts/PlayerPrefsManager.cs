@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerPrefsManager : MonoBehaviour
 {
     const string LEVEL_KEY = "level_unlocked_";
-
+    const string NUM_LIVES = "number_of_lives_";
     public static void UnlockLevel(int level)
     {
         if (level <= Application.levelCount - 1)
@@ -33,8 +33,19 @@ public class PlayerPrefsManager : MonoBehaviour
         }
     }
 
+    public static void SetNumLives(int lives)
+    {
+        PlayerPrefs.SetInt(NUM_LIVES, lives);
+    }
+
+    public static int GetNumLives()
+    {
+        return PlayerPrefs.GetInt(NUM_LIVES);
+    }
+
     public static void NewGame()
     {
         PlayerPrefs.DeleteAll();
+        SetNumLives(5);
     }
 }
