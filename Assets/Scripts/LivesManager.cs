@@ -7,13 +7,13 @@ public class LivesManager : MonoBehaviour
     private Text lifeText;
     private LevelManager levelManager;
 
-    public int lifeCounter;
+    public int livesCount;
 
     // Use this for initialization
     void Start()
     {
         lifeText = GetComponent<Text>();
-        lifeCounter = PlayerPrefsManager.GetNumLives();
+        livesCount = PlayerPrefsManager.GetNumLives();
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         if(!levelManager)
         {
@@ -24,18 +24,18 @@ public class LivesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifeText.text = lifeCounter.ToString();
+        lifeText.text = livesCount.ToString();
     }
 
     public void GainLife()
     {
-        lifeCounter++;
+        livesCount++;
     }
 
     public void LoseLife()
     {
-        lifeCounter--;
-        if (lifeCounter <= 0)
+        livesCount--;
+        if (livesCount <= 0)
         {
             PlayerPrefsManager.SetNumLives(5);
             levelManager.LoadLevel("01c Game Over");

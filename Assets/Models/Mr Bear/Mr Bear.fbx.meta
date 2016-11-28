@@ -1,15 +1,37 @@
 fileFormatVersion: 2
-guid: 98614180d3798de45830e40feadc3fbd
-timeCreated: 1480217291
+guid: 1f945c49d21628844bd9ac9b5a3d423e
+timeCreated: 1480219556
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Vert
+    100000: Body
+    100002: Circle
+    100004: Left Eye
+    100006: //RootNode
+    100008: Right Eye
+    100010: Sphere.002
+    400000: Body
+    400002: Circle
+    400004: Left Eye
+    400006: //RootNode
+    400008: Right Eye
+    400010: Sphere.002
+    2300000: Body
+    2300002: Circle
+    2300004: Left Eye
+    2300006: Right Eye
+    2300008: Sphere.002
+    3300000: Body
+    3300002: Circle
+    3300004: Left Eye
+    3300006: Right Eye
+    3300008: Sphere.002
+    4300000: Sphere.002
+    4300002: Right Eye
+    4300004: Left Eye
+    4300006: Body
+    4300008: Circle
   materials:
     importMaterials: 1
     materialName: 0

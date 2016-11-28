@@ -26,7 +26,7 @@ public class FinishLine : MonoBehaviour {
         if(collider.gameObject.tag == "Player")
         {
             PlayerPrefsManager.UnlockLevel(unlockLevelNum-1);
-            PlayerPrefsManager.SetNumLives(livesManager.lifeCounter);
+            PlayerPrefsManager.SetNumLives(livesManager.livesCount);
             levelManager.LoadLevel("01b World Map");
         }
     }

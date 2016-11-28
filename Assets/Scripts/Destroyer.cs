@@ -4,6 +4,9 @@ using System.Collections;
 public class Destroyer : MonoBehaviour {
     private PlayerSpawner spawner;
     private LivesManager livesManager;
+    private LevelManager levelManager;
+    [SerializeField]
+    private bool isWater = false;
 
     void Start()
     {
@@ -17,15 +20,40 @@ public class Destroyer : MonoBehaviour {
         {
             Debug.Log(name + " did not find livesManager at start");
         }
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        if (!levelManager)
+        {
+            Debug.Log(name + " did not find levelManager at start");
+        }
 
     }
 	void OnTriggerEnter(Collider collider)
     {
+        if(isWater && collider.tag != "Player")
+        {
+            return;
+        }
         if (collider.tag == "Player")
         {
-            livesManager.LoseLife();
-            spawner.SpawnPlayer();
+            HandlePlayerDestruction();
         }
             Destroy(collider.gameObject);
+    }
+
+    void HandlePlayerDestruction()
+    {
+        livesManager.LoseLife();
+        if (isWater)
+        {
+            if (livesManager.livesCount > 0)
+            {
+                PlayerPrefsManager.SetNumLives(livesManager.livesCount);
+                levelManager.LoadLevel("01b World Map");
+            }
+        }
+        else
+        {
+            spawner.SpawnPlayer();
+        }
     }
 }

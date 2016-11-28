@@ -38,7 +38,7 @@ public class PlayerHealthManager : MonoBehaviour {
             playerHealth = 0;
             livesManager.LoseLife();
             isDead = true;
-            if(livesManager.lifeCounter > 0)
+            if(livesManager.livesCount > 0)
             {
                 playerSpawner.SpawnPlayer();
             }
