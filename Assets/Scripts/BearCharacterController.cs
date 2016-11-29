@@ -10,6 +10,18 @@ public class BearCharacterController : MonoBehaviour {
         startScale = gameObject.transform.localScale;
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log(Input.mousePosition);
+        }
+    }
+
+
+
+
+
     // TODO: ADD AN ICE, MUD, AND SPRINGY OPTION FOR PLATFORMS
     void OnTriggerEnter(Collider collider)
     {

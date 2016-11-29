@@ -22,13 +22,7 @@ public class RisingWater : MonoBehaviour {
 	void Update () {
 	    if(waterRise)
         {
-            Debug.Log("Raising water");
             waterRigidBody.velocity = riseDirection.normalized * riseSpeed;
-        }
-        else
-        {
-            Debug.Log("Water Staying");
-            waterRigidBody.velocity = new Vector3(0, 0, 0);
         }
     }
 
@@ -37,7 +31,10 @@ public class RisingWater : MonoBehaviour {
         if(collider.gameObject.tag == "Player")
         {
             waterRise = onSwitch;
-            Debug.Log("water is rising: " +waterRise);
+            if (!waterRise)
+            {
+                waterRigidBody.velocity = new Vector3(0, 0, 0);
+            }
         }
     }
 }
