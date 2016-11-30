@@ -12,10 +12,7 @@ public class BearCharacterController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.Log(Input.mousePosition);
-        }
+
     }
 
 
