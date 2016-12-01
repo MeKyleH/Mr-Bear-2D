@@ -60,12 +60,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			// control and velocity handling is different when grounded and airborne:
 			if (m_IsGrounded)
-			{
-				HandleGroundedMovement(crouch, jump);
+            {
+                HandleGroundedMovement(crouch, jump);
 			}
-			else
+            else
 			{
-				HandleAirborneMovement();
+                HandleAirborneMovement();
 			}
 
 			ScaleCapsuleForCrouching(crouch);
@@ -155,11 +155,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void HandleAirborneMovement()
 		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
+            // apply extra gravity from multiplier:
+            Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);
 
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+            // apply extra force from player input:
+// TODO MAKE IT SO THAT THE PLAYER DOESN'T ZOOM FORWARD WITH THEIR JUMP
+            float x = Input.GetAxis("Horizontal");
+            if(x > 0)
+            {
+                transform.Translate(new Vector3(x/10, 0f, 0f), Space.World);
+            }
+            else if(x < 0)
+            {
+                transform.Translate(new Vector3(x/10, 0f, 0f), Space.World);
+            }
+
+            m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 		}
 
 
