@@ -6,6 +6,7 @@ public class LivesManager : MonoBehaviour
 {
     private Text lifeText;
     private LevelManager levelManager;
+    private RisingWaterManager risingWaterManager;
 
     public int livesCount;
 
@@ -18,6 +19,11 @@ public class LivesManager : MonoBehaviour
         if(!levelManager)
         {
             Debug.Log(name + " couldn't find LevelManager");
+        }
+        risingWaterManager = GameObject.FindObjectOfType<RisingWaterManager>();
+        if (!risingWaterManager)
+        {
+            Debug.Log(name + " did not find risingWaterManager at start");
         }
     }
 
@@ -38,6 +44,7 @@ public class LivesManager : MonoBehaviour
         if (livesCount <= 0)
         {
             PlayerPrefsManager.SetNumLives(5);
+            risingWaterManager.TriggerWaterRising(false);
             levelManager.LoadLevel("01c Game Over");
         }
     }

@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RisingWater : MonoBehaviour {
+public class RisingWaterManager : MonoBehaviour {
     [SerializeField]
     private GameObject water;
     [SerializeField]
     private Vector3 riseDirection;
     [SerializeField]
     private float riseSpeed;
-    [SerializeField]
-    private bool onSwitch = true;
-    private static bool waterRise = false;
+
     private Rigidbody waterRigidBody;
+    private bool isWaterRising;
 
     void Start()
     {
@@ -20,21 +19,18 @@ public class RisingWater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(waterRise)
+	    if(isWaterRising)
         {
             waterRigidBody.velocity = riseDirection.normalized * riseSpeed;
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+    public void TriggerWaterRising(bool isWaterRising)
     {
-        if(collider.gameObject.tag == "Player")
+        this.isWaterRising = isWaterRising;
+        if (!isWaterRising)
         {
-            waterRise = onSwitch;
-            if (!waterRise)
-            {
-                waterRigidBody.velocity = new Vector3(0, 0, 0);
-            }
+            waterRigidBody.velocity = new Vector3(0, 0, 0);
         }
     }
 }

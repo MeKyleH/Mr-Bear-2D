@@ -2,11 +2,13 @@
 using System.Collections;
 
 public class Destroyer : MonoBehaviour {
+    [SerializeField]
+    private bool isWater = false;
+
     private PlayerSpawner spawner;
     private LivesManager livesManager;
     private LevelManager levelManager;
-    [SerializeField]
-    private bool isWater = false;
+    private RisingWaterManager risingWaterManager;
 
     void Start()
     {
@@ -24,6 +26,11 @@ public class Destroyer : MonoBehaviour {
         if (!levelManager)
         {
             Debug.Log(name + " did not find levelManager at start");
+        }
+        risingWaterManager = GameObject.FindObjectOfType<RisingWaterManager>();
+        if (!risingWaterManager)
+        {
+            Debug.Log(name + " did not find risingWaterManager at start");
         }
 
     }
@@ -47,6 +54,7 @@ public class Destroyer : MonoBehaviour {
         {
             if (livesManager.livesCount > 0)
             {
+                risingWaterManager.TriggerWaterRising(false);
                 PlayerPrefsManager.SetNumLives(livesManager.livesCount);
                 levelManager.LoadLevel("01b World Map");
             }
