@@ -29,7 +29,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
-
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
@@ -160,7 +159,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Rigidbody.AddForce(extraGravityForce);
 
             // apply extra force from player input:
-// TODO MAKE IT SO THAT THE PLAYER DOESN'T ZOOM FORWARD WITH THEIR JUMP
             float x = Input.GetAxis("Horizontal");
             if(x > 0)
             {
@@ -171,6 +169,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 transform.Translate(new Vector3(x/10, 0f, 0f), Space.World);
             }
 
+            // limit player speed of movement
+            if (m_Rigidbody.velocity.x > m_MoveSpeedMultiplier * 4)
+            {
+                m_Rigidbody.velocity = new Vector3(m_MoveSpeedMultiplier, m_Rigidbody.velocity.y, 0);
+            }
+            else if (m_Rigidbody.velocity.x < m_MoveSpeedMultiplier * -4)
+            {
+                m_Rigidbody.velocity = new Vector3(m_MoveSpeedMultiplier * -1, m_Rigidbody.velocity.y, 0);
+            }
             m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 		}
 
