@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class LogicTrigger : MonoBehaviour {
-    [SerializeField]
-    private TriggerType triggerType;
-
     private enum TriggerType
     {
         WaterStartTrigger,
         WaterStopTrigger
     }
+
+    [SerializeField]
+    private TriggerType triggerType;
 
     private RisingWaterManager risingWaterManager;
 

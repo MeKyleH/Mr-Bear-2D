@@ -12,7 +12,7 @@ public class PlatformMover : MonoBehaviour
     }
 
     [SerializeField]
-    public float speed = 1;
+    private float speed = 1;
 
     public FollowType type = FollowType.MoveTowards;
     public PlatformPath path;
