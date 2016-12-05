@@ -11,9 +11,7 @@ public class LevelManager : MonoBehaviour {
 		if (autoLoadNextLevelAfter <= 0) {
 			Debug.Log ("Level auto load disabled, use a positive number in seconds");
 		} else {
-
-
-			Invoke (autoLoadScene != "" ? "AutoLoadScene" : "LoadNextLevel", autoLoadNextLevelAfter);
+      	    Invoke (autoLoadScene != "" ? "AutoLoadScene" : "LoadNextLevel", autoLoadNextLevelAfter);
 		}
 	}
 
@@ -40,7 +38,10 @@ public class LevelManager : MonoBehaviour {
     public void StartNewGame()
     {
         PlayerPrefsManager.NewGame();
-        PlayerPrefsManager.UnlockLevel(5);
+        PlayerPrefsManager.UnlockLevel(4);
+        PlayerPrefsManager.SetMapXPos(-27.0f);
+        PlayerPrefsManager.SetMapYPos(0.0f);
+        PlayerPrefsManager.SetMapZPos(-9.0f);
         LoadLevel("01b World Map");
     }
 }

@@ -16,6 +16,11 @@ public class WorldMapPlayer : MonoBehaviour {
     private int numStops;
     private int currentStop = 0;
 
+    void Awake()
+    {
+        gameObject.transform.position = new Vector3(PlayerPrefsManager.GetMapXPos(), PlayerPrefsManager.GetMapYPos(), PlayerPrefsManager.GetMapZPos());
+    }
+    
     // Use this for initialization
     void Start()
     {
@@ -37,42 +42,48 @@ public class WorldMapPlayer : MonoBehaviour {
             {
                 _currentPoint.MoveNext();
                 currentStop++;
-                if(currentStop >= numStops)
+                if (currentStop >= numStops)
                 {
                     isMoving = false;
                 }
             }
         }
+        // check for input when not moving
+        else
+        {
+            // enter level if on the level and you press jump
+            if (Input.GetButton("Jump"))
+            {
+                PlayerPrefsManager.SetMapXPos(transform.position.x);
+                PlayerPrefsManager.SetMapYPos(transform.position.y);
+                PlayerPrefsManager.SetMapZPos(transform.position.z);
+                levelManager.LoadLevel(currentLevel.name);
+            }
 
-        // enter level if on the level and you press jump
-        if (!isMoving && Input.GetButton("Jump"))
-        {
-            levelManager.LoadLevel(currentLevel.name);
-        }
+            // determine direction to move to next level
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
 
-        // determine direction to move to next level
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        if (y > 0 && currentLevel.upPath)
-        {
-            playerMovePath = currentLevel.upPath;
-            MovePlayer();
-        }
-        if (y < 0 && currentLevel.downPath)
-        {
-            playerMovePath = currentLevel.downPath;
-            MovePlayer();
-        }
-        if (x > 0 && currentLevel.rightPath)
-        {
-            playerMovePath = currentLevel.rightPath;
-            MovePlayer();
-        }
-        if (x < 0 && currentLevel.leftPath)
-        {
-            playerMovePath = currentLevel.leftPath;
-            MovePlayer();
+            if (y > 0 && currentLevel.upPath)
+            {
+                playerMovePath = currentLevel.upPath;
+                MovePlayer();
+            }
+            if (y < 0 && currentLevel.downPath)
+            {
+                playerMovePath = currentLevel.downPath;
+                MovePlayer();
+            }
+            if (x > 0 && currentLevel.rightPath)
+            {
+                playerMovePath = currentLevel.rightPath;
+                MovePlayer();
+            }
+            if (x < 0 && currentLevel.leftPath)
+            {
+                playerMovePath = currentLevel.leftPath;
+                MovePlayer();
+            }
         }
     }
 
