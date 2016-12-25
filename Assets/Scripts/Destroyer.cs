@@ -28,12 +28,8 @@ public class Destroyer : MonoBehaviour {
             Debug.Log(name + " did not find levelManager at start");
         }
         risingWaterManager = GameObject.FindObjectOfType<RisingWaterManager>();
-        if (!risingWaterManager)
-        {
-            Debug.Log(name + " did not find risingWaterManager at start");
-        }
-
     }
+
 	void OnTriggerEnter(Collider collider)
     {
         if(isWater && collider.tag != "Player")
