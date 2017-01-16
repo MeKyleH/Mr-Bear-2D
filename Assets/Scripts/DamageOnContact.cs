@@ -4,6 +4,7 @@ using System.Collections;
 public class DamageOnContact : MonoBehaviour
 {
     private PlayerHealthManager playerHealthManager;
+    private bool isRecoiling = false;
 
     public int strength = 25;
 
@@ -17,25 +18,26 @@ public class DamageOnContact : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        //prevent taking damage multiple times
+        if (isRecoiling)
+        {
+            isRecoiling = false;
+        }
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player" && !isRecoiling)
         {
-            //damage player 
-            Debug.Log("PLAYER TOOK DAMAGE FROM " + name);
+            //damage player and knock the player back
             playerHealthManager.TakeDamage(strength);
 
-            // knock the player back
-            Rigidbody playerRB = collider.GetComponent<Rigidbody>();
             Vector3 playerBlowbackForce = (collider.transform.up * 400) - (collider.transform.forward * 700);
             Debug.DrawRay(new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y, collider.gameObject.transform.position.z), playerBlowbackForce, Color.green);
-            playerRB.AddRelativeForce(playerBlowbackForce);
+            collider.GetComponent<Rigidbody>().AddRelativeForce(playerBlowbackForce);
+            isRecoiling = true;
         }
     }
 }
