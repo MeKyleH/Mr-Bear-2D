@@ -9,7 +9,7 @@ public class LevelLockManager : MonoBehaviour {
     {
         if(!PlayerPrefsManager.IsLevelUnlocked(levelNum))
         {
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -17,7 +17,7 @@ public class LevelLockManager : MonoBehaviour {
     {
         if (!PlayerPrefsManager.IsLevelUnlocked(levelNum))
         {
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class PlayerHealthManager : MonoBehaviour {
 
     private Image healthBar;
-    private LevelManager levelManager;
     private LivesManager livesManager;
     private PlayerSpawner playerSpawner;
 
@@ -17,7 +16,6 @@ public class PlayerHealthManager : MonoBehaviour {
 	void Start () {
         healthBar = GetComponent<Image>();
         playerHealth = maxPlayerHealth;
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
         livesManager = GameObject.FindObjectOfType<LivesManager>();
         playerSpawner = GameObject.FindObjectOfType<PlayerSpawner>();
         isDead = false;
