@@ -7,9 +7,14 @@ public class Enemy : MonoBehaviour {
     private bool pursuing = false;
     private PlayerHealthManager playerHealthManager;
 
-    public int hitpoints = 25;
-    public int strength = 10;
-    public float moveSpeed = 2;
+    [SerializeField]
+    private int hitpoints = 25;
+    [SerializeField]
+    private int strength = 10;
+    [SerializeField]
+    private float moveSpeed = 2;
+    [SerializeField]
+    private int detectionDistance = 10;
 
 
 	// Use this for initialization
@@ -19,12 +24,11 @@ public class Enemy : MonoBehaviour {
         {
             Debug.Log(name + " did not find healthManager at start");
         }
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        if(!player)
-        {
-            Debug.Log(name + " couldn't find player");
-        }
         animator = GetComponent<Animator>();
+        if(!animator)
+        {
+            Debug.Log(name + " couldn't find animator");
+        }
     }
 
     void Update()
@@ -32,6 +36,10 @@ public class Enemy : MonoBehaviour {
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
         }
         SetAnimationState();
     }
@@ -46,11 +54,10 @@ public class Enemy : MonoBehaviour {
         float angle = Vector3.Angle(direction, this.transform.forward);
 
         // sets animation state of the enemy
-        if (Vector3.Distance(player.position, this.transform.position) < 5 && (angle < 30 || pursuing))
+        if (Vector3.Distance(player.position, this.transform.position) < detectionDistance && (angle < 30 || pursuing))
         {
             pursuing = true;
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
-
             if (direction.magnitude > 1)
             {
                 this.transform.Translate(0, 0, moveSpeed / 100f);
@@ -75,15 +82,5 @@ public class Enemy : MonoBehaviour {
     public void Attack()
     {
         playerHealthManager.TakeDamage(strength);
-    }
-
-
-    //TODO DELETE THIS AND USE THROUGH ANIMATION EVENT
-    void OnTriggerEnter(Collider collider)
-    {
-        if(collider.gameObject.tag == "Player")
-        {
-            playerHealthManager.TakeDamage(hitpoints);
-        }
     }
 }
