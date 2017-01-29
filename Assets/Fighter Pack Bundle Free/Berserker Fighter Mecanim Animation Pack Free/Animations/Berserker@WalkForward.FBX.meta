@@ -120,7 +120,7 @@ ModelImporter:
     400112: Motion
     400114: Mesh_Berserker
     4300000: Mesh_Berserker
-    7400000: WalkForward
+    7400000: BerserkerWalkForward
     9500000: //RootNode
     13700000: Mesh_Berserker
   materials:
@@ -134,7 +134,11 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'B_Spine' has translation animation that will
+      be discarded.\n\t'B_Spine2' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -145,7 +149,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: WalkForward
+      name: BerserkerWalkForward
       takeName: Take 001
       firstFrame: 0
       lastFrame: 24

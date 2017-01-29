@@ -117,7 +117,7 @@ ModelImporter:
     400108: //RootNode
     400110: Mesh_Male
     400112: Motion
-    7400000: Idle
+    7400000: MaleIdle
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -130,7 +130,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'B_Spine2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'B_L_ForeArmTwist' is
+      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'B_R_ForeArmTwist'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -141,7 +146,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: MaleIdle
       takeName: Take 001
       firstFrame: 0
       lastFrame: 60

@@ -265,7 +265,7 @@ ModelImporter:
     400258: Mesh_Female
     4300000: Mesh_Heavy
     4300002: Mesh_Female
-    7400000: WalkForward
+    7400000: FemaleWalkForward
     9500000: //RootNode
     13700000: Mesh_Heavy
     13700002: Mesh_Female
@@ -280,7 +280,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
+      in copied configuration does not match position in animation file\nFemale@WalkForward\nClip
+      'Take 001' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'B_Spine'
+      has translation animation that will be discarded.\n\t'B_L_ForeArmTwist' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -291,7 +296,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: WalkForward
+      name: FemaleWalkForward
       takeName: Take 001
       firstFrame: 0
       lastFrame: 20

@@ -117,7 +117,7 @@ ModelImporter:
     400108: //RootNode
     400110: Mesh_Male
     400112: Motion
-    7400000: Male Punch
+    7400000: MalePunch
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -160,7 +160,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Male Punch
+      name: MalePunch
       takeName: Take 001
       firstFrame: 0
       lastFrame: 25

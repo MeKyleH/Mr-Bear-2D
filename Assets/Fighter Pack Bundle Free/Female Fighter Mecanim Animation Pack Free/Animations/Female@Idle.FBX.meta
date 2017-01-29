@@ -265,7 +265,7 @@ ModelImporter:
     400258: Mesh_Female
     4300000: Mesh_Heavy
     4300002: Mesh_Female
-    7400000: Idle
+    7400000: FemaleIdle
     9500000: //RootNode
     13700000: Mesh_Heavy
     13700002: Mesh_Female
@@ -280,7 +280,19 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
+      in copied configuration does not match position in animation file\nFemale@Idle\nClip
+      'Take 001' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'B_Spine2'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'B_L_ForeArmTwist'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'B_L_Finger02'
+      has scale animation that will be discarded.\n\t'B_L_Finger11' has scale animation
+      that will be discarded.\n\t'B_L_Finger12' has scale animation that will be discarded.\n\t'B_L_Finger21'
+      has scale animation that will be discarded.\n\t'B_L_Finger22' has scale animation
+      that will be discarded.\n\t'B_L_Finger31' has scale animation that will be discarded.\n\t'B_L_Finger32'
+      has scale animation that will be discarded.\n\t'B_L_Finger41' has scale animation
+      that will be discarded.\n\t'B_L_Finger42' has scale animation that will be discarded.\n\t'B_R_ForeArmTwist'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -291,7 +303,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: FemaleIdle
       takeName: Take 001
       firstFrame: 0
       lastFrame: 40

@@ -10,14 +10,6 @@ public class BearCharacterController : MonoBehaviour {
         startScale = gameObject.transform.localScale;
     }
 
-    void Update()
-    {
-
-    }
-
-
-
-
 
     // TODO: ADD AN ICE, MUD, AND SPRINGY OPTION FOR PLATFORMS
     void OnTriggerEnter(Collider collider)
@@ -27,7 +19,6 @@ public class BearCharacterController : MonoBehaviour {
             gameObject.transform.parent = collider.transform;
             gameObject.transform.localScale = startScale;
         }
-
     }
 
     void OnTriggerExit(Collider collider)
