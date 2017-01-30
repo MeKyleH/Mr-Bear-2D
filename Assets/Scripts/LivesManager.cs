@@ -44,7 +44,10 @@ public class LivesManager : MonoBehaviour
         if (livesCount <= 0)
         {
             PlayerPrefsManager.SetNumLives(5);
-            risingWaterManager.TriggerWaterRising(false);
+            if (risingWaterManager)
+            {
+                risingWaterManager.TriggerWaterRising(false);
+            }
             levelManager.LoadLevel("01c Game Over");
         }
     }

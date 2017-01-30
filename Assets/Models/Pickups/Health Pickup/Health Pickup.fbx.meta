@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-guid: d7cf147a8ae115a4a94f86276df360fb
-timeCreated: 1485741551
+guid: 8a2dd795fda8bfb4eaef33507cbbb846
+timeCreated: 1485749298
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Cube
-    100002: //RootNode
-    100004: Sphere
-    400000: Cube
-    400002: //RootNode
-    400004: Sphere
-    2300000: Cube
-    2300002: Sphere
-    3300000: Cube
-    3300002: Sphere
-    4300000: Sphere
-    4300002: Cube
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Health Pickup Mesh
   materials:
     importMaterials: 1
     materialName: 0

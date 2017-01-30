@@ -19,3 +19,11 @@
 * Fox Model is humanoid, no animations, scale of 0.15
 * Capsule Collider center is: 0, 0.9, -0.1
 
+
+
+***** ITEMS *****
+* Health Pickup (MODEL) has a scale of 0.05
+
+
+
+
