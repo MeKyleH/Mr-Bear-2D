@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour {
         PlayerPrefsManager.NewGame();
         PlayerPrefsManager.UnlockLevel(4);
         PlayerPrefsManager.SetMapXPos(-27.0f);
-        PlayerPrefsManager.SetMapYPos(0.0f);
+        PlayerPrefsManager.SetMapYPos(2.5f);
         PlayerPrefsManager.SetMapZPos(-9.0f);
         LoadLevel("01b World Map");
     }

@@ -32,7 +32,7 @@ public class PlayerPrefsManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Trying to query level not in build order");
+            Debug.LogError("Trying to query level not in build order (# " + level + ")");
             return false;
         }
     }
