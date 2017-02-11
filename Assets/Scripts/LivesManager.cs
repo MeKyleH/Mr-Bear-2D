@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour
@@ -10,7 +9,6 @@ public class LivesManager : MonoBehaviour
 
     public int livesCount;
 
-    // Use this for initialization
     void Start()
     {
         lifeText = GetComponent<Text>();
@@ -27,7 +25,6 @@ public class LivesManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         lifeText.text = livesCount.ToString();
@@ -41,14 +38,19 @@ public class LivesManager : MonoBehaviour
     public void LoseLife()
     {
         livesCount--;
+        if (risingWaterManager)
+        {
+            risingWaterManager.TriggerWaterRising(false);
+        }
         if (livesCount <= 0)
         {
             PlayerPrefsManager.SetNumLives(5);
-            if (risingWaterManager)
-            {
-                risingWaterManager.TriggerWaterRising(false);
-            }
             levelManager.LoadLevel("01c Game Over");
+        }
+        else
+        {
+            PlayerPrefsManager.SetNumLives(livesCount);
+            levelManager.LoadLevel("01b World Map");
         }
     }
 }

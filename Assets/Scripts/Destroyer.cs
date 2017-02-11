@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Destroyer : MonoBehaviour {
     [SerializeField]
@@ -36,28 +35,10 @@ public class Destroyer : MonoBehaviour {
         {
             return;
         }
+        Destroy(collider.gameObject);
         if (collider.tag == "Player")
         {
-            HandlePlayerDestruction();
-        }
-            Destroy(collider.gameObject);
-    }
-
-    void HandlePlayerDestruction()
-    {
-        livesManager.LoseLife();
-        if (isWater)
-        {
-            if (livesManager.livesCount > 0)
-            {
-                risingWaterManager.TriggerWaterRising(false);
-                PlayerPrefsManager.SetNumLives(livesManager.livesCount);
-                levelManager.LoadLevel("01b World Map");
-            }
-        }
-        else
-        {
-            spawner.SpawnPlayer();
+            livesManager.LoseLife();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Checkpoint : MonoBehaviour {
 
@@ -15,7 +14,7 @@ public class Checkpoint : MonoBehaviour {
     {
         if(collider.gameObject.tag == "Player")
         {
-            spawner.reachedCheckpoint = true;
+            PlayerPrefsManager.ReachCheckPoint(spawner.getLevelNum());
             boxCollider.enabled = false;
         }
     }

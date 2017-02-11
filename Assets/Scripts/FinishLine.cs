@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FinishLine : MonoBehaviour {
     [SerializeField]
     private int unlockLevelNum;
+
     private LivesManager livesManager;
     private LevelManager levelManager;
+    private PlayerSpawner spawner;
 
-	// Use this for initialization
-	void Start () {
+    void Start () {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         if(!levelManager)
         {
@@ -19,6 +19,11 @@ public class FinishLine : MonoBehaviour {
         {
             Debug.Log(name + " couldn't find livesManager");
         }
+        spawner = GameObject.FindObjectOfType<PlayerSpawner>();
+        if(!spawner)
+        {
+            Debug.Log(name + " couldn't find spawner");
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -26,6 +31,7 @@ public class FinishLine : MonoBehaviour {
         if(collider.gameObject.tag == "Player")
         {
             PlayerPrefsManager.UnlockLevel(unlockLevelNum);
+            PlayerPrefsManager.ClearLevel(spawner.getLevelNum());
             PlayerPrefsManager.SetNumLives(livesManager.livesCount);
             levelManager.LoadLevel("01b World Map");
         }

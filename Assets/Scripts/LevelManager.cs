@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 
@@ -38,6 +37,7 @@ public class LevelManager : MonoBehaviour {
     public void StartNewGame()
     {
         PlayerPrefsManager.NewGame();
+        //TODO CHANGE THIS TO BE THE CORRECT LEVEL BEFORE BUILDING RELEASE VERSION
         PlayerPrefsManager.UnlockLevel(4);
         PlayerPrefsManager.SetMapXPos(-27.0f);
         PlayerPrefsManager.SetMapYPos(2.5f);

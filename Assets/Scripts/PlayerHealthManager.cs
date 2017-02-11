@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour {
@@ -7,9 +6,9 @@ public class PlayerHealthManager : MonoBehaviour {
     private Image healthBar;
     private LivesManager livesManager;
     private PlayerSpawner playerSpawner;
+    private LevelManager levelManager;
 
     public float maxPlayerHealth;
-    public bool isDead;
 
     public static float playerHealth;
 
@@ -18,7 +17,7 @@ public class PlayerHealthManager : MonoBehaviour {
         playerHealth = maxPlayerHealth;
         livesManager = GameObject.FindObjectOfType<LivesManager>();
         playerSpawner = GameObject.FindObjectOfType<PlayerSpawner>();
-        isDead = false;
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
 	
 	void UpdateHealth () {
@@ -29,17 +28,10 @@ public class PlayerHealthManager : MonoBehaviour {
     public void TakeDamage(float damage)
     {
         playerHealth -= damage;
-        if (playerHealth <= 0 && !isDead)
+        if (playerHealth <= 0)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            Destroy(player.gameObject);
-            playerHealth = 0;
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
             livesManager.LoseLife();
-            isDead = true;
-            if(livesManager.livesCount > 0)
-            {
-                playerSpawner.SpawnPlayer();
-            }
         }
         UpdateHealth();
     }

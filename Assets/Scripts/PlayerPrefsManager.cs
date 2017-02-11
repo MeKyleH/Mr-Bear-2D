@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
     const string LEVEL_KEY = "level_unlocked_";
+    const string CHECKPOINT_KEY = "checkpoint_reached_";
     const string NUM_LIVES = "number_of_lives_";
     const string MAPPLAYER_X_POS = "mapplayer_x_pos_";
     const string MAPPLAYER_Y_POS = "mapplayer_y_pos_";
@@ -24,6 +24,34 @@ public class PlayerPrefsManager : MonoBehaviour
     public static bool IsLevelUnlocked(int level)
     {
         int levelValue = PlayerPrefs.GetInt(LEVEL_KEY + level.ToString());
+        bool isLevelUnlocked = (levelValue == 1);
+
+        if (level <= Application.levelCount - 1)
+        {
+            return isLevelUnlocked;
+        }
+        else
+        {
+            Debug.LogError("Trying to query level not in build order (# " + level + ")");
+            return false;
+        }
+    }
+
+    public static void ReachCheckPoint(int level)
+    {
+        if (level <= Application.levelCount - 1)
+        {
+            PlayerPrefs.SetInt(CHECKPOINT_KEY + level.ToString(), 1); // Use 1 for true
+        }
+        else
+        {
+            Debug.LogError("Trying to unlock level not in build order");
+        }
+    }
+
+    public static bool IsCheckPointReached(int level)
+    {
+        int levelValue = PlayerPrefs.GetInt(CHECKPOINT_KEY + level.ToString());
         bool isLevelUnlocked = (levelValue == 1);
 
         if (level <= Application.levelCount - 1)
@@ -77,7 +105,10 @@ public class PlayerPrefsManager : MonoBehaviour
         return PlayerPrefs.GetFloat(MAPPLAYER_Z_POS);
     }
 
-
+    public static void ClearLevel(int level)
+    {
+        PlayerPrefs.DeleteKey(CHECKPOINT_KEY + level.ToString());
+    }
 
     public static void NewGame()
     {

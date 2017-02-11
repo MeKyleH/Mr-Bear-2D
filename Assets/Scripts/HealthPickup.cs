@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealthPickup : MonoBehaviour {
     [SerializeField]
@@ -8,7 +6,6 @@ public class HealthPickup : MonoBehaviour {
 
     private PlayerHealthManager playerHealth;
 
-	// Use this for initialization
 	void Start () {
         playerHealth = GameObject.FindObjectOfType<PlayerHealthManager>();
         if(!playerHealth)
@@ -26,7 +23,7 @@ public class HealthPickup : MonoBehaviour {
     {
         if(collider.tag == "Player")
         {
-            playerHealth.HealPlayer(healAmount);
+           playerHealth.HealPlayer(healAmount);
            Destroy(gameObject);
         }
     }
