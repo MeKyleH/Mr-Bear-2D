@@ -83,4 +83,14 @@ public class Enemy : MonoBehaviour {
     {
         playerHealthManager.TakeDamage(strength);
     }
+    
+    public void TakeDamage(int damage)
+    {
+        hitpoints -= damage;
+        if(hitpoints <= 0)
+        {
+            //TODO PLAY DEATH ANIMATION AND WAIT TILL IT FINISHES TO DESTROY THE GAMEOBJECT
+            Destroy(gameObject);
+        }
+    }
 }

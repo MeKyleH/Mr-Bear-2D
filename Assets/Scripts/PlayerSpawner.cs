@@ -9,14 +9,12 @@ public class PlayerSpawner : MonoBehaviour {
     private Vector3[] spawnPoints;
     private Quaternion spawnRotation = new Quaternion(0, 0, 0, 0);
     private CameraFollow mainCamera;
-    private PlayerHealthManager playerHealthManager;
 
     public bool reachedCheckpoint = false;
 
     private void Start()
     {
         reachedCheckpoint = PlayerPrefsManager.IsCheckPointReached(levelNum);
-        playerHealthManager = GameObject.FindObjectOfType<PlayerHealthManager>();
         mainCamera = GameObject.FindObjectOfType<CameraFollow>();
         spawnPoints = new Vector3[2] { this.gameObject.transform.GetChild(0).transform.position, this.gameObject.transform.GetChild(1).transform.position };
         SpawnPlayer();

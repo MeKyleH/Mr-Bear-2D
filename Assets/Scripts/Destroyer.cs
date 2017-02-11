@@ -7,7 +7,6 @@ public class Destroyer : MonoBehaviour {
     private PlayerSpawner spawner;
     private LivesManager livesManager;
     private LevelManager levelManager;
-    private RisingWaterManager risingWaterManager;
 
     void Start()
     {
@@ -26,7 +25,6 @@ public class Destroyer : MonoBehaviour {
         {
             Debug.Log(name + " did not find levelManager at start");
         }
-        risingWaterManager = GameObject.FindObjectOfType<RisingWaterManager>();
     }
 
 	void OnTriggerEnter(Collider collider)

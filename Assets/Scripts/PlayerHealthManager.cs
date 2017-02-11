@@ -5,8 +5,6 @@ public class PlayerHealthManager : MonoBehaviour {
 
     private Image healthBar;
     private LivesManager livesManager;
-    private PlayerSpawner playerSpawner;
-    private LevelManager levelManager;
 
     public float maxPlayerHealth;
 
@@ -16,8 +14,6 @@ public class PlayerHealthManager : MonoBehaviour {
         healthBar = GetComponent<Image>();
         playerHealth = maxPlayerHealth;
         livesManager = GameObject.FindObjectOfType<LivesManager>();
-        playerSpawner = GameObject.FindObjectOfType<PlayerSpawner>();
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
 	
 	void UpdateHealth () {
